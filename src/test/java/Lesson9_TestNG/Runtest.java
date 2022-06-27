@@ -9,35 +9,63 @@ import org.testng.annotations.Test;
 
 public class Runtest extends BaseTest {
 
-    @Test(priority = 1, description = "Login to HRM")
-    public void Login() throws InterruptedException {
-
-        driver.get("https://ecommerce.anhtester.com/users/login");
-
-        String popup = "//button[@class = 'absolute-top-right bg-white shadow-lg btn btn-circle btn-icon mr-n3 mt-n3 set-session' ]";
-        WebElement closepopup = driver.findElement(By.xpath(popup));
-        closepopup.click();
-
-
-        String login = "//a[@class = 'text-reset d-inline-block opacity-60 py-2' and normalize-space() = 'Login']";
-
-        WebElement buttonLogin = driver.findElement(By.xpath(login));
-        buttonLogin.click();
-        Thread.sleep(1000);
-
-        String email = "//input[@id = 'email']";
-        String password = "//input[@id = 'password']";
-        String submitLogin = "//button[normalize-space()='Login']";
-
-        driver.findElement(By.xpath(email)).sendKeys("cashierngan002@gmail.com");
-        driver.findElement(By.xpath(password)).sendKeys("123456");
-        driver.findElement(By.xpath(submitLogin)).click();
-        Thread.sleep(2000);
-
-    }
+//    @Test(priority = 1, description = "Login to HRM")
+//    public void Login() throws InterruptedException {
+//
+//        driver.get("https://ecommerce.anhtester.com/users/login");
+//
+//        String popup = "//button[@class = 'absolute-top-right bg-white shadow-lg btn btn-circle btn-icon mr-n3 mt-n3 set-session' ]";
+//        WebElement closepopup = driver.findElement(By.xpath(popup));
+//        closepopup.click();
+//
+//
+//        String login = "//a[@class = 'text-reset d-inline-block opacity-60 py-2' and normalize-space() = 'Login']";
+//
+//        WebElement buttonLogin = driver.findElement(By.xpath(login));
+//        buttonLogin.click();
+//        Thread.sleep(1000);
+//
+//        String email = "//input[@id = 'email']";
+//        String password = "//input[@id = 'password']";
+//        String submitLogin = "//button[normalize-space()='Login']";
+//
+//        driver.findElement(By.xpath(email)).sendKeys("cashierngan002@gmail.com");
+//        driver.findElement(By.xpath(password)).sendKeys("123456");
+//        driver.findElement(By.xpath(submitLogin)).click();
+//        Thread.sleep(2000);
+//
+//    }
 
     @Test(priority = 2, description = "Add Category")
     public void addCategory() throws InterruptedException {
+
+//        driver.get("https://ecommerce.anhtester.com/users/login");
+//
+//        String popup = "//button[@class = 'absolute-top-right bg-white shadow-lg btn btn-circle btn-icon mr-n3 mt-n3 set-session' ]";
+//        WebElement closepopup = driver.findElement(By.xpath(popup));
+//        closepopup.click();
+//
+//        String login = "//a[@class = 'text-reset d-inline-block opacity-60 py-2' and normalize-space() = 'Login']";
+//        WebElement buttonLogin = driver.findElement(By.xpath(login));
+//        buttonLogin.click();
+//        Thread.sleep(1000);
+//
+//        String email = "//input[@id = 'email']";
+//        String password = "//input[@id = 'password']";
+//        String submitLogin = "//button[normalize-space()='Login']";
+//
+//        driver.findElement(By.xpath(email)).sendKeys("cashierngan002@gmail.com");
+//        driver.findElement(By.xpath(password)).sendKeys("123456");
+//        driver.findElement(By.xpath(submitLogin)).click();
+//        Thread.sleep(2000);
+
+
+
+
+
+
+
+
         String searchMenu = "//input[@class = 'form-control bg-soft-secondary border-0 form-control-sm text-white']";
         WebElement enterSearchMenu = driver.findElement(By.xpath(searchMenu));
         enterSearchMenu.sendKeys("Category");
@@ -151,6 +179,43 @@ public class Runtest extends BaseTest {
         Thread.sleep(2000);
 
 
+
+
+
+
+    }
+
+    @Test (priority = 3, description = "Kiểm tra giá trị Category sau khi add đã tồn tại chưa")
+    public void searchCategory() throws InterruptedException {
+
+//        driver.get("https://ecommerce.anhtester.com/users/login");
+//
+//        String popup = "//button[@class = 'absolute-top-right bg-white shadow-lg btn btn-circle btn-icon mr-n3 mt-n3 set-session' ]";
+//        WebElement closepopup = driver.findElement(By.xpath(popup));
+//        closepopup.click();
+//
+//        String login = "//a[@class = 'text-reset d-inline-block opacity-60 py-2' and normalize-space() = 'Login']";
+//        WebElement buttonLogin = driver.findElement(By.xpath(login));
+//        buttonLogin.click();
+//        Thread.sleep(1000);
+//
+//        String email = "//input[@id = 'email']";
+//        String password = "//input[@id = 'password']";
+//        String submitLogin = "//button[normalize-space()='Login']";
+//
+//        driver.findElement(By.xpath(email)).sendKeys("cashierngan002@gmail.com");
+//        driver.findElement(By.xpath(password)).sendKeys("123456");
+//        driver.findElement(By.xpath(submitLogin)).click();
+//        Thread.sleep(2000);
+
+
+
+
+
+
+
+
+
         driver.findElement(By.xpath("//input[@class = 'form-control bg-soft-secondary border-0 form-control-sm text-white']")).sendKeys("Category");
         Thread.sleep(1000);
 
@@ -173,8 +238,6 @@ public class Runtest extends BaseTest {
             System.out.println("False");
             System.out.println(getNameCategory.getText());
         }
-
-
     }
 
 }
