@@ -4,6 +4,7 @@
     <test name="Regression testing">
         <classes>
             <class name="Lesson9_TestNG.Runtest" />
+<!--            <class name="Lesson11_Assert.HardAssert" />-->
         </classes>
     </test>
 </suite>
