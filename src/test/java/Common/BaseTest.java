@@ -15,7 +15,7 @@ public class BaseTest {
 
 
     public static WebDriver driver;
-    @BeforeTest
+    @BeforeMethod
     public static void createDriver() throws InterruptedException {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
@@ -24,7 +24,7 @@ public class BaseTest {
         driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(20));
     }
 
-    @AfterTest
+    @AfterMethod
     public static void closeDriver(){
         try {
             Thread.sleep(1000);

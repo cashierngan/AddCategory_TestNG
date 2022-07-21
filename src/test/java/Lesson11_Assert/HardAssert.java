@@ -20,5 +20,6 @@ public class HardAssert extends BaseTest {
         Assert.assertEquals(actualTitle, expectedTitle);
          driver.findElement(By.id("btn-login"));
          Assert.assertTrue(driver.findElement(By.id("btn-login")).getText().trim().equals("LOG IN"), "Test assert true");
+
     }
 }
