@@ -24,7 +24,7 @@ public class BaseTest {
         driver = new ChromeDriver();
         driver.manage().window().maximize();
 
-//        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
         //Bổ trợ ổn định hơn
         driver.manage().timeouts().scriptTimeout(Duration.ofSeconds(30));
