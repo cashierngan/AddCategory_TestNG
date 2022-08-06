@@ -21,7 +21,7 @@ public class LearnJSExecutor extends BaseTest {
         js.executeScript("arguments[0].click();", button);
         Thread.sleep(1000);
 
-        // Get page title and Domain using JavascriptExecutor
+        // Get pages title and Domain using JavascriptExecutor
         String titleText = js.executeScript("return document.title;").toString();
         System.out.println("Page Title is: " + titleText);
 

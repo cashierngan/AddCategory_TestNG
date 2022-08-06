@@ -12,7 +12,7 @@ import java.time.Duration;
 public class LearnExplicitWait extends BaseTest {
 
     // hay hơn là điều kiện có được đáp ứng hay không
-    // trường hợp page load nhanh nút hk hiển thị kịp
+    // trường hợp pages load nhanh nút hk hiển thị kịp
     // sử dụng cục bộ
     @Test(priority = 1)
     public void ExplicitWaitDemo1() throws InterruptedException {

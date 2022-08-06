@@ -26,10 +26,10 @@ public class Project extends BaseTest {
         System.out.println(loginPageText);
         Assert.assertEquals(loginPageText.trim(), "Welcome to HRM System", "Text không thuộc trang Login");
 
-        WebUI.setText(driver, By.id("iusername"), "admin01");
-        WebUI.setText(driver, By.id("ipassword"), "123456");
-        WebUI.clickElement(driver, By.xpath("//button[normalize-space()='Login']"));
-        WebUI.clickElement(driver, By.xpath("//span[contains(text(),'Dự án')]"));
+        WebUI.setText(By.id("iusername"), "admin01");
+        WebUI.setText(By.id("ipassword"), "123456");
+        WebUI.clickElement(By.xpath("//button[normalize-space()='Login']"));
+        WebUI.clickElement(By.xpath("//span[contains(text(),'Dự án')]"));
 
 //        driver.findElement(By.id("iusername")).sendKeys("admin01");
 //        driver.findElement(By.id("ipassword")).sendKeys("123456");
@@ -41,15 +41,15 @@ public class Project extends BaseTest {
         Assert.assertTrue(pageDuAnURL.contains("/projects-list"), "Không đúng URL của trang Dự Án");
 
 
-        WebUI.clickElement(driver, By.xpath("//a[normalize-space()='Thêm mới']"));
-        WebUI.setText(driver, By.xpath("//input[@placeholder='Tiêu đề']"), tenDuAn);
+        WebUI.clickElement(By.xpath("//a[normalize-space()='Thêm mới']"));
+        WebUI.setText(By.xpath("//input[@placeholder='Tiêu đề']"), tenDuAn);
 
 //        driver.findElement(By.xpath("//a[normalize-space()='Thêm mới']")).click();
 //
 //        driver.findElement(By.xpath("//input[@placeholder='Tiêu đề']")).sendKeys(tenDuAn);
 
-        WebUI.clickElement(driver,By.xpath("//span[@id='select2-client_id-container']"));
-        WebUI.setText(driver, By.xpath("//span[@class='select2-search select2-search--dropdown']//input[@role='searchbox']"), "Lam Nguyen");
+        WebUI.clickElement(By.xpath("//span[@id='select2-client_id-container']"));
+        WebUI.setText(By.xpath("//span[@class='select2-search select2-search--dropdown']//input[@role='searchbox']"), "Lam Nguyen");
 //        driver.findElement(By.xpath("//span[@id='select2-client_id-container']")).click();
 
 //        driver.findElement(By.xpath("//span[@class='select2-search select2-search--dropdown']//input[@role='searchbox']")).sendKeys("Lam Nguyen");
@@ -104,10 +104,10 @@ public class Project extends BaseTest {
         driver.findElement(By.xpath("//div[@id='xin_table_wrapper']//input")).sendKeys(tenDuAn);
 
 
-//        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+//        WebDriverWait wait = new WebDriverWait(Duration.ofSeconds(5));
 //        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//td[normalize-space()='"+tenDuAn+"']")));
 //
-        WebUI.waitForElementVisible(driver, By.xpath("//td[normalize-space()='"+tenDuAn+"']"));
+        WebUI.waitForElementVisible(By.xpath("//td[normalize-space()='"+tenDuAn+"']"));
 
         String titleDuAn = driver.findElement(By.xpath("//table[@id='xin_table']//tbody//td[1]")).getText();
         Assert.assertEquals(titleDuAn.toLowerCase(Locale.ROOT), tenDuAn.toLowerCase(), "Tên dự án sai");
