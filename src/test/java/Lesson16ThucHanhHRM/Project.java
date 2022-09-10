@@ -31,28 +31,13 @@ public class Project extends BaseTest {
         WebUI.clickElement(By.xpath("//button[normalize-space()='Login']"));
         WebUI.clickElement(By.xpath("//span[contains(text(),'Dự án')]"));
 
-//        driver.findElement(By.id("iusername")).sendKeys("admin01");
-//        driver.findElement(By.id("ipassword")).sendKeys("123456");
-//        driver.findElement(By.xpath("//button[normalize-space()='Login']")).click();
-//        driver.findElement(By.xpath("//span[contains(text(),'Dự án')]")).click();
-
         String pageDuAnURL = driver.getCurrentUrl();
         System.out.println(pageDuAnURL);
         Assert.assertTrue(pageDuAnURL.contains("/projects-list"), "Không đúng URL của trang Dự Án");
-
-
         WebUI.clickElement(By.xpath("//a[normalize-space()='Thêm mới']"));
         WebUI.setText(By.xpath("//input[@placeholder='Tiêu đề']"), tenDuAn);
-
-//        driver.findElement(By.xpath("//a[normalize-space()='Thêm mới']")).click();
-//
-//        driver.findElement(By.xpath("//input[@placeholder='Tiêu đề']")).sendKeys(tenDuAn);
-
         WebUI.clickElement(By.xpath("//span[@id='select2-client_id-container']"));
         WebUI.setText(By.xpath("//span[@class='select2-search select2-search--dropdown']//input[@role='searchbox']"), "Lam Nguyen");
-//        driver.findElement(By.xpath("//span[@id='select2-client_id-container']")).click();
-
-//        driver.findElement(By.xpath("//span[@class='select2-search select2-search--dropdown']//input[@role='searchbox']")).sendKeys("Lam Nguyen");
 
         driver.findElement(By.xpath("//ul[@id='select2-client_id-results']//li[normalize-space()='Lam Nguyen']")).click();
 

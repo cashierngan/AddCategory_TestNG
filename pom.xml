@@ -26,22 +26,22 @@
         <dependency>
             <groupId>io.github.bonigarcia</groupId>
             <artifactId>webdrivermanager</artifactId>
-            <version>5.2.0</version>
+            <version>5.2.1</version>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/org.testng/testng -->
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
-            <version>7.6.0</version>
-            <scope>test</scope>
+            <version>7.6.1</version>
+<!--            <scope>test</scope>-->
         </dependency>
 
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-simple</artifactId>
             <version>1.7.36</version>
-            <scope>test</scope>
+<!--            <scope>test</scope>-->
         </dependency>
 
 

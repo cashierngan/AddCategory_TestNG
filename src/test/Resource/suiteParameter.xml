@@ -1,0 +1,44 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Suite Parameter" verbose="1">
+<!--    <test name="Sum Number">-->
+<!--        <parameter name="number2" value="5"></parameter>-->
+<!--        <parameter name="message" value="Tổng của 2 giá trị là"></parameter>-->
+<!--        <classes>-->
+<!--            <class name="Lesson24ParameterMultiBrowser.TestParameter">-->
+<!--            </class>-->
+<!--            -->
+<!--            -->
+<!--        </classes>-->
+<!--    </test>-->
+
+    <test name="Login Parameter">
+<!--        <parameter name="browser" value="chrome"></parameter>-->
+        <parameter name="username" value="admin01"></parameter>
+        <parameter name="password" value="123456"></parameter>
+        <classes>
+            <class name="Lesson24ParameterMultiBrowser.LoginTestParameter">
+                <methods>
+                    <include name="testLoginSuccess"></include>
+                </methods>
+            </class>
+
+
+        </classes>
+    </test>
+
+    <test name="Login Parameter 2">
+<!--        <parameter name="browser" value="chrome"></parameter>-->
+        <parameter name="username" value="admin013456"></parameter>
+        <parameter name="password" value="123456"></parameter>
+        <classes>
+            <class name="Lesson24ParameterMultiBrowser.LoginTestParameter">
+                <methods>
+                    <include name="loginWithUsernameInValid"></include>
+                </methods>
+            </class>
+
+
+        </classes>
+    </test>
+</suite>

@@ -1,10 +1,8 @@
-package Lesson17_POM.pages;
+package Lesson19_PageNavigation.pages;
 
 import ngan.xd.utils.WebUI;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.testng.Assert;
 
 public class LoginPage {
     WebDriver driver;
@@ -28,24 +26,12 @@ public class LoginPage {
     private By buttonReset = By.xpath("//button[@type='submit']");
     private By linkClickHere = By.xpath("//a[normalize-space()='Click here']");
 
-    public void login(String email, String password){
+
+    public DashboardPage login(String email, String password){
         WebUI.openURL( "https://hrm.anhtester.com/");
         WebUI.setText( inputEmail, email);
         WebUI.setText( inputPassword, password);
         WebUI.clickElement( buttonSignin);
+        return new DashboardPage(driver); // khởi tạo trang Dashboard
     }
-
-    public void resetPassword(String emailForgot){
-        WebUI.openURL( "https://hrm.anhtester.com/");
-        WebUI.clickElement( linkForgotPassword);
-//        WebUI.verifyEquals();
-        Assert.assertTrue(WebUI.getElementText(pageTextForgotPassword).equals("Reset your password"));
-        WebUI.setText( inputEmaiForgotPassword, emailForgot );
-        WebUI.clickElement( buttonReset);
-        WebUI.clickElement(linkClickHere);
-
-    }
-
-
-
 }
