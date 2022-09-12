@@ -1,6 +1,7 @@
 package Lesson24ParameterMultiBrowser;
 
 import Common.BaseTest;
+import driver.DriverManager;
 import ngan.xd.utils.WebUI;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Parameters;
@@ -12,7 +13,7 @@ public class LoginTestParameter extends BaseTest {
     @BeforeMethod
     public void LoginTest(){
       //Truyền driver từ BaseTest sang các class Page
-        loginPage  = new Lesson20_PracticePOM.pages.LoginPage(driver);
+        loginPage  = new Lesson20_PracticePOM.pages.LoginPage(DriverManager.getDriver());
     }
 
     @Test (priority = 1)

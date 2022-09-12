@@ -1,6 +1,7 @@
 package Lesson15_Wait;
 
 import Common.BaseTest;
+import driver.DriverManager;
 import org.openqa.selenium.By;
 import org.testng.annotations.Test;
 
@@ -11,32 +12,32 @@ public class LearnImplicitWait extends BaseTest {
     @Test(priority = 1)
     public void ImplicitWaitDemo1() throws InterruptedException {
 
-        driver.get("https://hrm.anhtester.com/");
+        DriverManager.getDriver().get("https://hrm.anhtester.com/");
 
-        driver.findElement(By.id("iusername")).sendKeys("admin01");
-        driver.findElement(By.id("ipassword")).sendKeys("123456");
-        driver.findElement(By.xpath("//button[@type='submit']")).click();
+        DriverManager.getDriver().findElement(By.id("iusername")).sendKeys("admin01");
+        DriverManager.getDriver().findElement(By.id("ipassword")).sendKeys("123456");
+        DriverManager.getDriver().findElement(By.xpath("//button[@type='submit']")).click();
 
         //Click menu dự án
-        driver.findElement(By.xpath("//span[contains(text(),'Dự án')]")).click();
+        DriverManager.getDriver().findElement(By.xpath("//span[contains(text(),'Dự án')]")).click();
 
         Thread.sleep(2000);
-        driver.quit();
+        DriverManager.getDriver().quit();
     }
 
     @Test(priority = 2)
     public void ImplicitWaitDemo2() throws InterruptedException {
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
-        driver.get("https://hrm.anhtester.com/");
+        DriverManager.getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+        DriverManager.getDriver().get("https://hrm.anhtester.com/");
 
-        driver.findElement(By.id("iusername")).sendKeys("admin01");
-        driver.findElement(By.id("ipassword")).sendKeys("123456");
-        driver.findElement(By.xpath("//button[@type='submit']")).click();
+        DriverManager.getDriver().findElement(By.id("iusername")).sendKeys("admin01");
+        DriverManager.getDriver().findElement(By.id("ipassword")).sendKeys("123456");
+        DriverManager.getDriver().findElement(By.xpath("//button[@type='submit']")).click();
 
         //Click menu dự án
-        driver.findElement(By.xpath("//span[contains(text(),'Dự án')]")).click();
+        DriverManager.getDriver().findElement(By.xpath("//span[contains(text(),'Dự án')]")).click();
 
         Thread.sleep(2000);
-        driver.quit();
+        DriverManager.getDriver().quit();
     }
 }

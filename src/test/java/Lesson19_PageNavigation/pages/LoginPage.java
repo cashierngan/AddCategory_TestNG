@@ -1,17 +1,12 @@
 package Lesson19_PageNavigation.pages;
 
+import driver.DriverManager;
 import ngan.xd.utils.WebUI;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
+
 
 public class LoginPage {
-    WebDriver driver;
 
-    //Hàm xây dựng
-    public LoginPage(WebDriver driver){
-        this.driver = driver;
-        new WebUI(driver); // Khởi tạo giá trị cho WebUI
-    }
 
     //Login
     private String pageText = "Welcome to HRM System";
@@ -32,6 +27,6 @@ public class LoginPage {
         WebUI.setText( inputEmail, email);
         WebUI.setText( inputPassword, password);
         WebUI.clickElement( buttonSignin);
-        return new DashboardPage(driver); // khởi tạo trang Dashboard
+        return new DashboardPage(); // khởi tạo trang Dashboard
     }
 }

@@ -10,10 +10,7 @@ public class LoginPage {
     WebDriver driver;
 
     //Hàm xây dựng
-    public LoginPage(WebDriver driver){
-        this.driver = driver;
-        new WebUI(driver); // Khởi tạo giá trị cho WebUI
-    }
+
 
     //Login
     private String pageText = "Welcome to HRM System";

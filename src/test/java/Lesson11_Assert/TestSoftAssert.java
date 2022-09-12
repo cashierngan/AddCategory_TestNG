@@ -1,22 +1,23 @@
 package Lesson11_Assert;
 
 import Common.BaseTest;
+import driver.DriverManager;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-import static Common.BaseTest.driver;
+
 
 public class TestSoftAssert extends BaseTest {
 
     @Test(priority = 1)
     public void RunTest() {
 
-        driver.get("https://anhtester.com");
+        DriverManager.getDriver().get("https://anhtester.com");
 
         SoftAssert softassert = new SoftAssert();
 
         String expectedTitle = "Anh Tester";
-        String originalTitle = driver.getTitle();
+        String originalTitle = DriverManager.getDriver().getTitle();
 
         System.out.println("*** Checking For The First Title ***");
 

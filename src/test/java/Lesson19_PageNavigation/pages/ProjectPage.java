@@ -5,11 +5,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class ProjectPage {
-    WebDriver driver;
-    public ProjectPage(WebDriver driver){
-        this.driver = driver;
-        new WebUI(driver);
-    }
+
 
     private By buttonThemMoi = By.xpath("//a[normalize-space()='Thêm mới']");
     private By inputTitle = By.xpath("//input[@placeholder='Tiêu đề']");

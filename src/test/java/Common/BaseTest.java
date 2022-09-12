@@ -1,5 +1,6 @@
 package Common;
 
+import driver.DriverManager;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -18,15 +19,18 @@ import java.time.Duration;
 
 public class BaseTest {
 
-    public static WebDriver driver;
+
 
     @BeforeMethod
     @Parameters({"browser"})
     public static void createDriver(@Optional("chrome") String browser) {
-        setupDriver(browser);
+        WebDriver driver = setupDriver(browser);
+        DriverManager.setDriver(driver);
+
     }
 
     public static WebDriver setupDriver(String browserName) {
+        WebDriver driver;
         System.out.println(browserName.trim().toLowerCase());
         switch (browserName.trim().toLowerCase()) {
             case "chrome":
@@ -46,6 +50,7 @@ public class BaseTest {
     }
 
     private static WebDriver initChromeDriver() {
+        WebDriver driver;
         System.out.println("Launching Chrome browser...");
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
@@ -54,6 +59,7 @@ public class BaseTest {
     }
 
     private static WebDriver initEdgeDriver() {
+        WebDriver driver;
         System.out.println("Launching Edge browser...");
         WebDriverManager.edgedriver().setup();
         driver = new EdgeDriver();
@@ -62,6 +68,7 @@ public class BaseTest {
     }
 
     private static WebDriver initFirefoxDriver() {
+        WebDriver driver;
         System.out.println("Launching Firefox browser...");
         WebDriverManager.firefoxdriver().setup();
         driver = new FirefoxDriver();
@@ -71,6 +78,7 @@ public class BaseTest {
 
     @AfterMethod
     public static void closeDriver() {
+        WebDriver driver;
         //driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(0)); //Reset timeout
         try {
             Thread.sleep(2000);
@@ -78,8 +86,8 @@ public class BaseTest {
             throw new RuntimeException(e);
         }
 
-        if(driver != null) {
-            driver.quit();
+        if (DriverManager.getDriver() != null) {
+            DriverManager.quit();
         }
     }
 

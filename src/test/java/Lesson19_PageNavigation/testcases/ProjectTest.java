@@ -12,9 +12,9 @@ public class ProjectTest extends BaseTest {
     private DashboardPage dashboardPage;
 
     @BeforeMethod
-    public void setupTest(){
-        loginPage = new LoginPage(driver);
-    }
+//    public void setupTest(){
+//        loginPage = new LoginPage(driver);
+//    }
     @Test
     public void testOpenProject(){
 

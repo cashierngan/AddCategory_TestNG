@@ -1,6 +1,7 @@
 package Lesson16ThucHanhHRM;
 
 import Common.BaseTest;
+import driver.DriverManager;
 import ngan.xd.utils.WebUI;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -20,9 +21,9 @@ public class Project extends BaseTest {
     String tenDuAn = "Dự Án 2807B1";
     @Test
     public void createProject() throws InterruptedException {
-        driver.get("https://hrm.anhtester.com");
+        DriverManager.getDriver().get("https://hrm.anhtester.com");
 
-        String loginPageText = driver.findElement(By.xpath("//h4[@class='mb-3 f-w-600']")).getText();
+        String loginPageText = DriverManager.getDriver().findElement(By.xpath("//h4[@class='mb-3 f-w-600']")).getText();
         System.out.println(loginPageText);
         Assert.assertEquals(loginPageText.trim(), "Welcome to HRM System", "Text không thuộc trang Login");
 
@@ -31,7 +32,7 @@ public class Project extends BaseTest {
         WebUI.clickElement(By.xpath("//button[normalize-space()='Login']"));
         WebUI.clickElement(By.xpath("//span[contains(text(),'Dự án')]"));
 
-        String pageDuAnURL = driver.getCurrentUrl();
+        String pageDuAnURL = DriverManager.getDriver().getCurrentUrl();
         System.out.println(pageDuAnURL);
         Assert.assertTrue(pageDuAnURL.contains("/projects-list"), "Không đúng URL của trang Dự Án");
         WebUI.clickElement(By.xpath("//a[normalize-space()='Thêm mới']"));
@@ -39,54 +40,54 @@ public class Project extends BaseTest {
         WebUI.clickElement(By.xpath("//span[@id='select2-client_id-container']"));
         WebUI.setText(By.xpath("//span[@class='select2-search select2-search--dropdown']//input[@role='searchbox']"), "Lam Nguyen");
 
-        driver.findElement(By.xpath("//ul[@id='select2-client_id-results']//li[normalize-space()='Lam Nguyen']")).click();
+        DriverManager.getDriver().findElement(By.xpath("//ul[@id='select2-client_id-results']//li[normalize-space()='Lam Nguyen']")).click();
 
 
-        driver.findElement(By.name("budget_hours")).sendKeys("100");
+        DriverManager.getDriver().findElement(By.name("budget_hours")).sendKeys("100");
 
 
-        driver.findElement(By.xpath("//label[normalize-space()='Priority']/following-sibling::span")).click();
+        DriverManager.getDriver().findElement(By.xpath("//label[normalize-space()='Priority']/following-sibling::span")).click();
 
-        driver.findElement(By.xpath("//span[@class='select2-search select2-search--dropdown']//input[@role='searchbox']")).sendKeys("Cao");
+        DriverManager.getDriver().findElement(By.xpath("//span[@class='select2-search select2-search--dropdown']//input[@role='searchbox']")).sendKeys("Cao");
 
-        driver.findElement(By.xpath("//span[@class='select2-results']//li[normalize-space()='Cao nhất']")).click();
-
-
-        driver.findElement(By.xpath("//label[contains(text(),'Ngày bắt đầu')]/following-sibling::div")).click();
-
-        driver.findElement(By.xpath("//a[normalize-space()='21']")).click();
-
-        driver.findElement(By.xpath("(//button[normalize-space()='OK'])[1]")).click();
+        DriverManager.getDriver().findElement(By.xpath("//span[@class='select2-results']//li[normalize-space()='Cao nhất']")).click();
 
 
-        driver.findElement(By.xpath("//label[contains(text(),'Ngày kết thúc')]/following-sibling::div")).click();
+        DriverManager.getDriver().findElement(By.xpath("//label[contains(text(),'Ngày bắt đầu')]/following-sibling::div")).click();
 
-        driver.findElement(By.xpath("(//a[normalize-space()='25'])[2]")).click();
+        DriverManager.getDriver().findElement(By.xpath("//a[normalize-space()='21']")).click();
 
-        driver.findElement(By.xpath("(//button[normalize-space()='OK'])[2]")).click();
-
-
-        driver.findElement(By.id("summary")).sendKeys("Note");
+        DriverManager.getDriver().findElement(By.xpath("(//button[normalize-space()='OK'])[1]")).click();
 
 
+        DriverManager.getDriver().findElement(By.xpath("//label[contains(text(),'Ngày kết thúc')]/following-sibling::div")).click();
 
-        WebElement inputNHOM = driver.findElement(By.xpath("//div[@id='employee_ajax']//li"));
-        JavascriptExecutor js = (JavascriptExecutor) driver;
+        DriverManager.getDriver().findElement(By.xpath("(//a[normalize-space()='25'])[2]")).click();
+
+        DriverManager.getDriver().findElement(By.xpath("(//button[normalize-space()='OK'])[2]")).click();
+
+
+        DriverManager.getDriver().findElement(By.id("summary")).sendKeys("Note");
+
+
+
+        WebElement inputNHOM = DriverManager.getDriver().findElement(By.xpath("//div[@id='employee_ajax']//li"));
+        JavascriptExecutor js = (JavascriptExecutor) DriverManager.getDriver();
         js.executeScript("arguments[0].scrollIntoView(false);", inputNHOM);
 
         js.executeScript("arguments[0].click();", inputNHOM);
 
-        driver.findElement(By.xpath("//div[@id='employee_ajax']//li//input")).sendKeys("Hai Mai");
-        driver.findElement(By.xpath("//div[@id='employee_ajax']//li//input")).sendKeys(Keys.ENTER);
+        DriverManager.getDriver().findElement(By.xpath("//div[@id='employee_ajax']//li//input")).sendKeys("Hai Mai");
+        DriverManager.getDriver().findElement(By.xpath("//div[@id='employee_ajax']//li//input")).sendKeys(Keys.ENTER);
 
 
         //Nhấn nút Lưu
-        driver.findElement(By.xpath("//span[normalize-space()='Lưu']")).click();
+        DriverManager.getDriver().findElement(By.xpath("//span[normalize-space()='Lưu']")).click();
 
 
         //Tìm kiếm để kiểm tra lại
-        js.executeScript("arguments[0].scrollIntoView(false);", driver.findElement(By.xpath("//div[@id='xin_table_wrapper']//input")));
-        driver.findElement(By.xpath("//div[@id='xin_table_wrapper']//input")).sendKeys(tenDuAn);
+        js.executeScript("arguments[0].scrollIntoView(false);", DriverManager.getDriver().findElement(By.xpath("//div[@id='xin_table_wrapper']//input")));
+        DriverManager.getDriver().findElement(By.xpath("//div[@id='xin_table_wrapper']//input")).sendKeys(tenDuAn);
 
 
 //        WebDriverWait wait = new WebDriverWait(Duration.ofSeconds(5));
@@ -94,7 +95,7 @@ public class Project extends BaseTest {
 //
         WebUI.waitForElementVisible(By.xpath("//td[normalize-space()='"+tenDuAn+"']"));
 
-        String titleDuAn = driver.findElement(By.xpath("//table[@id='xin_table']//tbody//td[1]")).getText();
+        String titleDuAn = DriverManager.getDriver().findElement(By.xpath("//table[@id='xin_table']//tbody//td[1]")).getText();
         Assert.assertEquals(titleDuAn.toLowerCase(Locale.ROOT), tenDuAn.toLowerCase(), "Tên dự án sai");
     }
 }

@@ -1,16 +1,13 @@
 package Lesson20_PracticePOM.pages;
 
+import driver.DriverManager;
 import ngan.xd.utils.WebUI;
 import org.apache.commons.lang3.ObjectUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class CommonPage {
-    private WebDriver driver;
-    public CommonPage(WebDriver driver){
-        this.driver = driver;
-        new WebUI(driver);
-    }
+
 
 
     // Class chung
@@ -25,7 +22,7 @@ public class CommonPage {
     public LoginPage getLoginPage(){
         if (loginPage == null)
         {
-            loginPage = new LoginPage(driver);
+            loginPage = new LoginPage(DriverManager.getDriver());
         }
         return loginPage;
     }
@@ -33,7 +30,7 @@ public class CommonPage {
     public DashboardPage getDashboardPage() {
         if (dashboardPage == null)
         {
-            dashboardPage = new DashboardPage(driver);
+            dashboardPage = new DashboardPage();
         }
         return dashboardPage;
     }
@@ -41,7 +38,7 @@ public class CommonPage {
     public ProjectPage getProjectPage() {
         if (projectPage == null)
         {
-            projectPage = new ProjectPage(driver);
+            projectPage = new ProjectPage();
         }
         return projectPage;
     }

@@ -1,5 +1,6 @@
 package Lesson20_PracticePOM.pages;
 
+import driver.DriverManager;
 import ngan.xd.utils.WebUI;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -10,18 +11,11 @@ import org.testng.Assert;
 import java.time.Duration;
 
 public class LoginPage extends CommonPage {
-    WebDriver driver;
     private WebDriverWait wait;
 
 
     //Hàm xây dựng
-    public LoginPage(WebDriver driver){
-        super(driver);
-        this.driver = driver;
-//        new WebUI(driver); // Khởi tạo giá trị cho WebUI -> không cần khởi tạo lại vì static chỉ cần gọi 1 lần ở CommonPage
 
-        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-    }
 
     //Login
     private String pageText = "Welcome to HRM System";
@@ -38,6 +32,11 @@ public class LoginPage extends CommonPage {
 
 
     private  By alertMessage = By.xpath("//div[@class = 'toast-message']");
+
+    public LoginPage(WebDriver driver) {
+        super();
+    }
+
     public DashboardPage login(String email, String password){
         WebUI.openURL( "https://hrm.anhtester.com/");
         WebUI.setText(inputUsername, email);
@@ -48,7 +47,7 @@ public class LoginPage extends CommonPage {
 //        wait.until(ExpectedConditions.visibilityOfElementLocated(dashboardPage.menuTrangchu))
         boolean checkMenu = WebUI.checkElementExist(getDashboardPage().menuTrangchu);
         Assert.assertTrue(checkMenu, "Login fail. Không tìm thấy menu trang chủ");
-        return new DashboardPage(driver); // khởi tạo trang Dashboard
+        return new DashboardPage(); // khởi tạo trang Dashboard
     }
 
     public void loginWithUsernameInValid(String email, String password){
@@ -58,7 +57,7 @@ public class LoginPage extends CommonPage {
         WebUI.clickElement( buttonSignin);
         boolean checkAlertMessage = WebUI.checkElementExist(alertMessage);
         Assert.assertTrue(checkAlertMessage, "Fail message");
-        Assert.assertTrue(driver.findElement(alertMessage).getText().trim().equals("Invalid Login Credentials."), "Fail. Text NOT match");
+        Assert.assertTrue(DriverManager.getDriver().findElement(alertMessage).getText().trim().equals("Invalid Login Credentials."), "Fail. Text NOT match");
 
     }
     public void loginWithPasswordInValid(String email, String password){
@@ -68,7 +67,7 @@ public class LoginPage extends CommonPage {
         WebUI.clickElement( buttonSignin);
         boolean checkAlertMessage = WebUI.checkElementExist(alertMessage);
         Assert.assertTrue(checkAlertMessage, "Fail message");
-        Assert.assertTrue(driver.findElement(alertMessage).getText().trim().equals("Invalid Login Credentials.."), "Fail. Text NOT match");
+        Assert.assertTrue(DriverManager.getDriver().findElement(alertMessage).getText().trim().equals("Invalid Login Credentials.."), "Fail. Text NOT match");
     }
 
     public void resetPassword(String emailForgot){
@@ -78,7 +77,7 @@ public class LoginPage extends CommonPage {
         WebUI.setText( inputEmaiForgotPassword, emailForgot );
         WebUI.clickElement( buttonReset);
         WebUI.clickElement(linkClickHere);
-        Assert.assertTrue(driver.findElement(alertMessage).getText().trim().equals("Invalid Login Credentials.."), "Fail. Text NOT match");
+        Assert.assertTrue(DriverManager.getDriver().findElement(alertMessage).getText().trim().equals("Invalid Login Credentials.."), "Fail. Text NOT match");
 
 
     }

@@ -2,6 +2,7 @@ package Lesson17_POM.testcase;
 
 import Common.BaseTest;
 import Lesson17_POM.pages.LoginPage;
+import driver.DriverManager;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -10,7 +11,7 @@ public class LoginTest extends BaseTest {
 
     @BeforeMethod
     public void LoginTest(){
-        loginPage = new LoginPage(driver); //Truyền driver từ BaseTest sang các class Page
+        loginPage = new LoginPage(); //Truyền driver từ BaseTest sang các class Page
     }
 
     @Test
